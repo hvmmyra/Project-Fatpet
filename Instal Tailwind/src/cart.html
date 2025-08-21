@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FatPet - Keranjang</title>
+  <link href="./output.css" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+<header>
+  <nav style="background-color: #E3D0B6;">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="javascript:void(0)" onclick="history.back()" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <ion-icon name="arrow-back-outline" class="text-2xl text-black"></ion-icon>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">FatPet</span>
+      </a>
+
+      <a href="profile.html" class="flex items-center text-black hover:text-[#8F5E1C] transition">
+        <ion-icon name="person-circle-outline" size="large"></ion-icon>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="max-w-4xl mx-auto p-6 flex-grow">
+
+  <div id="keranjang-list" class="space-y-4"></div>
+
+  <div id="empty-msg" style="display: none;" class="text-center text-gray-500 mt-24 flex flex-col items-center justify-center space-y-4">
+    <ion-icon name="sparkles-outline" size="large"></ion-icon>
+    <p class="text-lg font-semibold">Keranjang belanja kamu masih kosong</p>
+    <p class="text-gray-400 max-w-xs">Yuk, mulai belanja dan temukan produk favoritmu!</p>
+    <div class="w-full">
+      <a href="homepage.html" class="inline-block w-full p-2 text-center bg-[#B7772F] text-white font-bold rounded hover:bg-[#9f5e24] transition">Kembali Belanja</a>
+    </div>
+  </div>
+
+  <div id="total-section" style="display: none;" class="mt-8 text-right font-semibold text-xl">
+    Total Harga: <span id="total-harga">Rp 0</span>
+  </div>
+
+  <div class="mt-6 text-right">
+    <button id="btn-checkout" disabled class="bg-[#B7772F] text-white px-4 py-2 rounded font-bold hover:bg-[#9f5e24] transition disabled:opacity-50 disabled:cursor-not-allowed">Checkout</button>
+  </div>
+</main>
+
+<script>
+  const keranjangList = document.getElementById("keranjang-list");
+  const emptyMsg = document.getElementById("empty-msg");
+  const totalSection = document.getElementById("total-section");
+  const totalHargaEl = document.getElementById("total-harga");
+  const btnCheckout = document.getElementById("btn-checkout");
+
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  function formatRupiah(angka) {
+    return 'Rp ' + angka.toLocaleString('id-ID');
+  }
+
+  async function renderKeranjang() {
+    keranjangList.innerHTML = "";
+
+    if (keranjang.length === 0) {
+      emptyMsg.style.display = "flex";
+      totalSection.style.display = "none";
+      btnCheckout.style.display = "none";
+      return;
+    }
+
+    emptyMsg.style.display = "none";
+    totalSection.style.display = "block";
+    btnCheckout.style.display = "inline-block";
+
+    for (let i = 0; i < keranjang.length; i++) {
+      const item = keranjang[i];
+      try {
+        const res = await fetch(`https://fakestoreapi.com/products/${item.id}`);
+        if (!res.ok) throw new Error("Gagal mengambil data produk");
+        const product = await res.json();
+
+        const hargaSatuan = Math.round(product.price * 1600);
+        const hargaItem = hargaSatuan * item.jumlah;
+
+        const itemEl = document.createElement("div");
+        itemEl.className = "bg-white rounded-lg shadow p-4 flex items-center gap-4";
+
+        itemEl.innerHTML = `
+          <input type="checkbox" class="produk-checkbox" data-index="${i}" checked />
+          <img src="${product.image}" alt="${product.title}" class="w-16 h-16 object-contain rounded" />
+          <div class="flex-1 min-w-0">
+            <h2 class="font-semibold text-lg truncate">${product.title}</h2>
+            <p class="text-sm text-gray-600">Harga: ${formatRupiah(hargaSatuan)}</p>
+            <div class="flex items-center gap-2 mt-1">
+              <button class="decrease-btn px-2 py-1 bg-gray-200 rounded text-sm font-bold" data-index="${i}">−</button>
+              <span class="text-sm font-semibold jumlah-val" data-index="${i}">${item.jumlah}</span>
+              <button class="increase-btn px-2 py-1 bg-gray-200 rounded text-sm font-bold" data-index="${i}">+</button>
+            </div>
+            <p class="text-sm font-semibold mt-1">Subtotal: ${formatRupiah(hargaItem)}</p>
+          </div>
+          <button data-index="${i}" class="hapus-btn text-red-500 hover:text-red-700" title="Hapus produk">
+            <ion-icon name="trash-outline" class="text-2xl"></ion-icon>
+          </button>
+        `;
+
+        keranjangList.appendChild(itemEl);
+
+      } catch (error) {
+        console.error("Error fetch produk:", error);
+      }
+    }
+
+    updateTotalHarga();
+
+    document.querySelectorAll(".hapus-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = e.currentTarget.dataset.index;
+        keranjang.splice(idx, 1);
+        localStorage.setItem("keranjang", JSON.stringify(keranjang));
+        renderKeranjang();
+      });
+    });
+
+    document.querySelectorAll(".produk-checkbox").forEach(cb => {
+      cb.addEventListener("change", () => {
+        updateCheckoutButtonStatus();
+        updateTotalHarga();
+      });
+    });
+
+    // Event tambah jumlah
+    document.querySelectorAll(".increase-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = e.currentTarget.dataset.index;
+        keranjang[idx].jumlah += 1;
+        localStorage.setItem("keranjang", JSON.stringify(keranjang));
+        renderKeranjang();
+      });
+    });
+
+    // Event kurangi jumlah
+    document.querySelectorAll(".decrease-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = e.currentTarget.dataset.index;
+        if (keranjang[idx].jumlah > 1) {
+          keranjang[idx].jumlah -= 1;
+          localStorage.setItem("keranjang", JSON.stringify(keranjang));
+          renderKeranjang();
+        }
+      });
+    });
+
+    updateCheckoutButtonStatus();
+  }
+
+  async function updateTotalHarga() {
+    const checkboxes = document.querySelectorAll(".produk-checkbox");
+    let totalHarga = 0;
+
+    for (const cb of checkboxes) {
+      if (cb.checked) {
+        const idx = cb.dataset.index;
+        const item = keranjang[idx];
+
+        try {
+          const res = await fetch(`https://fakestoreapi.com/products/${item.id}`);
+          if (!res.ok) throw new Error("Gagal mengambil data produk");
+          const product = await res.json();
+
+          const hargaSatuan = Math.round(product.price * 1600);
+          const subtotal = hargaSatuan * item.jumlah;
+          totalHarga += subtotal;
+
+        } catch (error) {
+          console.error("Error fetch produk:", error);
+        }
+      }
+    }
+
+    totalHargaEl.textContent = formatRupiah(totalHarga);
+  }
+
+  function updateCheckoutButtonStatus() {
+    const checkboxes = document.querySelectorAll(".produk-checkbox");
+    const adaYangDipilih = Array.from(checkboxes).some(cb => cb.checked);
+    btnCheckout.disabled = !adaYangDipilih;
+  }
+
+  btnCheckout.addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll(".produk-checkbox");
+    let produkDipilih = [];
+
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        produkDipilih.push(keranjang[cb.dataset.index]);
+      }
+    });
+
+    if (produkDipilih.length === 0) {
+      alert("Pilih produk yang ingin di-checkout dulu ya!");
+      return;
+    }
+
+    // Simpan produk yang dipilih untuk checkout
+    localStorage.setItem("checkoutKeranjang", JSON.stringify(produkDipilih));
+
+    // Hapus produk yang sudah di-checkout dari keranjang
+    keranjang = keranjang.filter((item, index) => {
+      return !produkDipilih.some(p => p.id === item.id && p.jumlah === item.jumlah);
+    });
+
+    // Simpan keranjang yang sudah diperbarui ke localStorage
+    localStorage.setItem("keranjang", JSON.stringify(keranjang));
+
+    // Render ulang keranjang biar tampilannya update
+    renderKeranjang();
+
+    // Pindah ke halaman checkout
+    window.location.href = "checkout.html";
+  });
+
+  renderKeranjang();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FatPet</title>
+    <link href="./output.css" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+    .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+    <header>
+    <!-- Nav -->
+    <nav style="background-color: #E3D0B6;">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">FatPet</span>
+        </a>
+
+    <!-- Search -->
+    <div class="mx-4 w-200">
+      <div class="relative">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Apa yang kamu butuhkan?"
+          class="w-full p-2 ps-10 text-sm border border-[#8F5E1C] rounded-lg bg-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#8F5E1C]"
+        />
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <ion-icon name="search-outline" class="text-lg text-[#8F5E1C]"></ion-icon>
+        </div>
+      </div>
+    </div>
+  
+    <div class="right-4 flex items-center space-x-6">
+    <a href="cart.html" class="flex items-center text-black hover:text-[#8F5E1C] transition">
+    <ion-icon name="cart-outline" size="large"></ion-icon>
+    </a>
+
+    <a href="profile.html" class="flex items-center text-black hover:text-[#8F5E1C] transition">
+    <ion-icon name="person-circle-outline" size="large"></ion-icon>
+    </a>
+  </div>
+    </nav>
+  </header>
+
+    <!-- Banner Section -->
+  <section class="mt-8">
+    <img src="images/hewanpeliharaan.jpg" alt="Hewan Peliharaan" class="w-full max-w-3xl mx-auto rounded-lg border-2 border-[#8F5E1C] hover:border-[#8F5E1C] shadow-md transition duration-300" />
+  </section>
+
+  <!-- Trending Section -->
+  <section class="max-w-7xl mx-auto p-4 mt-12 bg-white rounded-xl shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Lagi trending, nih..</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      
+<!-- Card 1 -->
+<a href="#">
+<div class="flex items-center p-4 bg-white rounded-lg shadow transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+  <img src="images/bajuanabul.jpeg" alt="Baju Anabul" class="w-16 h-16 object-contain mr-4">
+  <div>
+    <h3 class="font-semibold">Baju Anabul</h3>
+    <p class="text-sm text-gray-500">158rb Produk</p>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<a href="#">  
+<div class="flex items-center p-4 bg-white rounded-lg shadow transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+  <img src="images/aksesoris.jpeg" alt="Aksesoris Anabul" class="w-16 h-16 object-contain mr-4">
+  <div>
+    <h3 class="font-semibold">Aksesoris Anabul</h3>
+    <p class="text-sm text-gray-500">157rb Produk</p>
+  </div>
+</div>
+</a>
+
+<!-- Card 3 -->
+<a href="#">
+<div class="flex items-center p-4 bg-white rounded-lg shadow transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+  <img src="images/petcargo.jpeg" alt="Pet Cargo" class="w-16 h-16 object-contain mr-4">
+  <div>
+    <h3 class="font-semibold">Pet Cargo</h3>
+    <p class="text-sm text-gray-500">129rb Produk</p>
+  </div>
+</div>
+</a>
+
+<!-- Card 4 -->
+<a href="#">
+<div class="flex items-center p-4 bg-white rounded-lg shadow transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+  <img src="images/pasir.jpeg" alt="Baju Anabul" class="w-16 h-16 object-contain mr-4">
+  <div>
+    <h3 class="font-semibold">Pasir Kucing</h3>
+    <p class="text-sm text-gray-500">145rb Produk</p>
+  </div>
+</div>
+</a>
+
+<!-- Card 5 -->
+<a href="#">
+<div class="flex items-center p-4 bg-white rounded-lg shadow transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+  <img src="images/serbukhamster.jpeg" alt="Aksesoris Anabul" class="w-16 h-16 object-contain mr-4">
+  <div>
+    <h3 class="font-semibold">Serbuk Kayu Hamster</h3>
+    <p class="text-sm text-gray-500">139rb Produk</p>
+  </div>
+</div>
+</a>
+
+<!-- Card 6 -->
+<a href="#">
+<div class="flex items-center p-4 bg-white rounded-lg shadow transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+  <img src="images/pakanburung.jpeg" alt="Pet Cargo" class="w-16 h-16 object-contain mr-4">
+  <div>
+    <h3 class="font-semibold">pakan burung</h3>
+    <p class="text-sm text-gray-500">117rb Produk</p>
+  </div>
+</div>
+</a>
+    </div>
+    <div class="text-right mt-4">
+      <a href="#" class="text-sm font-semibold text-gray-600 hover:underline">
+        Telusuri lebih lanjut..
+      </a>
+    </div>
+  </section>
+
+  <!-- Product Section -->
+  <section class="max-w-7xl mx-auto p-4 mt-12 bg-white rounded-xl shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Bayar di Tempat 30rb</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+
+      <a href="#">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+          <div class="flex justify-center mb-3">
+            <img src="images/kalung kucing.jpeg" alt="Kalung" class="w-36 h-36 object-contain">
+          </div>
+          <h5 class="text-sm font-semibold text-gray-900 mb-2">Kalung Lonceng Anabul Lucu Gemas</h5>
+          <p class="text-base font-bold text-black mb-1">Rp9.000</p>
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Depok</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-600">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">4.6 | 5rb+ terjual</span>
+          </div>
+        </div>
+      </a>
+      
+      <a href="#">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+          <div class="flex justify-center mb-3">
+            <img src="images/snack ANJING.jpeg" alt="Snack ANJING" class="w-36 h-36 object-contain">
+          </div>
+          <h5 class="text-sm font-semibold text-gray-900 mb-2">Pedigree Denta Stix 
+            Chewy Chunx Mini 68gr..</h5>
+          <p class="text-base font-bold text-black mb-1">Rp23.680</p>
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Bekasi</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-600">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">4.4 | 2rb+ terjual</span>
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="#">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+          <div class="flex justify-center mb-3">
+            <img src="images/snack MIAW.jpeg" alt="Snack Kucing" class="w-36 h-36 object-contain">
+          </div>
+          <h5 class="text-sm font-semibold text-gray-900 mb-2">TEMPTATIONS Creamy
+            Purree 24gr - snack kucing</h5>
+          <p class="text-base font-bold text-black mb-1">Rp16.000</p>
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Tangerang Selatan</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-600">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">4.8 | 5rb+ terjual</span>
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="#">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+          <div class="flex justify-center mb-3">
+            <img src="images/baju.jpeg" alt="baju miaw" class="w-36 h-36 object-contain">
+          </div>
+          <h5 class="text-sm font-semibold text-gray-900 mb-2">Baju Kucing Motif Garis Kaos Singlet Lucu..</h5>
+          <p class="text-base font-bold text-black mb-1">Rp18.000</p>
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Bandung</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-600">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">4.2 | 4rb+ terjual</span>
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="#">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+          <div class="flex justify-center mb-3">
+            <img src="images/snack kucing.jpeg" alt="mam miaw" class="w-36 h-36 object-contain">
+          </div>
+          <h5 class="text-sm font-semibold text-gray-900 mb-2">Bio Creamy Cemilan/Snack
+            Kucing 60gr Liquid</h5>
+          <p class="text-base font-bold text-black mb-1">Rp13.500</p>
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Jakarta Pusat</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-600">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">4.8 | 100+ terjual</span>
+          </div>
+        </div>
+      </a>
+
+
+      <a href="#">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+          <div class="flex justify-center mb-3">
+            <img src="images/mainan kucing.jpeg" alt="Mainan Kucing" class="w-36 h-36 object-contain">
+          </div>
+          <h5 class="text-sm font-semibold text-gray-900 mb-2">MAINAN KUCING Bunyi
+            Kerincing Tongkat..</h5>
+          <p class="text-base font-bold text-black mb-1">Rp16.000</p>
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Depok</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-600">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">4.4 | 8rb+ terjual</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+    <div class="text-right mt-4">
+      <a href="login.html" class="text-sm font-semibold text-gray-600 hover:underline">
+        Telusuri lebih lanjut..
+      </a>
+    </div>
+  </section>
+
+  <!-- Semua Produk-->
+    <section class="max-w-7xl mx-auto p-4 mt-20 bg-white rounded-xl shadow-md">
+      <h2 class="text-xl font-semibold mb-4">Jelajahi Semua Produk</h2>
+    <div id="product-list" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+    </div>
+
+    <div class="text-right mt-4">
+      <a href="#" class="text-sm font-semibold text-gray-600 hover:underline">
+        Telusuri lebih lanjut..
+      </a>
+    </div>
+    </section>
+
+
+    <section class="w-full bg-white flex justify-center py-8">
+      <div class="w-[98%] max-w-[1300px] text-center">
+    <a href="#" class="inline-block border-[2px] border-[#9b5d12] text-black text-[16px] font-semibold px-10 py-3 rounded-lg hover:bg-[#9b5d12] hover:text-white transition">
+        Muat Lebih Banyak
+    </a>
+    </div>
+    </section>
+
+    <footer class="bg-white text-black py-12 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-sm">
+
+      <div>
+        <h2 class="text-lg font-semibold mb-3">FatPet</h2>
+        <p class="text-gray-800 mb-2 text-xs py-3">Terbaik untuk Kebutuhan Hewan Peliharaan Anda</p>
+      </div>
+  
+      <!-- Support -->
+      <div>
+        <h3 class="font-semibold mb-3">Support</h3>
+        <p class="text-black text-xs mb-1 space-y-3">Email</p>
+        <p class="text-gray-800 text-xs mb-1 space-y-3">FatPet@gmail.com</p>
+        <p class="text-black text-xs mb-1 space-y-3">Contact</p>
+        <p class="text-gray-800 text-xs mb-1 space-y-3">+62 | 812-9572-6063</p>
+      </div>
+  
+      <!-- Account -->
+      <div>
+        <h3 class="font-semibold mb-3">Account</h3>
+        <ul class="text-gray-800 text-xs space-y-3">
+          <li><a href="profile.html">My Account</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shop</a></li>
+        </ul>
+      </div>
+  
+      <!-- Metode Pembayaran -->
+      <div>
+        <h3 class="font-semibold mb-3">Metode Pembayaran</h3>
+        <div class="grid grid-cols-2 gap-2 items-center">
+          <img src="images/Gopay.png" alt="gopay" class="h-4">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1SpRwqDxJbBTIX-k_dDsdgDdWbhu4TSY6SA&s" alt="BRI" class="h-4">
+          <img src="images/ovo.png" alt="OVO" class="h-4">
+          <img src="images/BNI.webp" alt="BNI" class="h-4">
+          <img src="images/dana.png" alt="DANA" class="h-4">
+          <img src="images/alfamart.png" alt="Alfamart" class="h-4">
+          <img src="images/klik bca.jpeg" alt="Klik BCA" class="h-4">
+          <img src="images/indomart.png" alt="Indomaret" class="h-4">
+          <img src="images/mandiri.png" alt="Mandiri" class="h-4">
+          <img src="https://storage.googleapis.com/storage-ajaib-prd-platform-wp-artifact/2019/12/Logo-BCA.jpg" alt="BCA" class="h-4">
+        </div>
+      </div>
+  
+      <!-- Jasa Pengiriman -->
+      <div>
+        <h3 class="font-semibold mb-3">Jasa Pengiriman</h3>
+        <div class="grid grid-cols-2 gap-2 items-center">
+          <img src="images/gosend.png" alt="GoSend" class="h-4">
+          <img src="images/jne.png" alt="JNE" class="h-4">
+          <img src="images/jnt.png" alt="J&T" class="h-4">
+          <img src="images/sicepat.png" alt="SiCepat" class="h-4">
+          <img src="images/grab exspress.png" alt="GrabExpress" class="h-4">
+          <img src="images/anter aja.jpeg" alt="Anteraja" class="h-4">
+          <img src="images/id express.png" alt="ID Express" class="h-4">
+          <img src="images/lala move.png" alt="Lalamove" class="h-4">
+        </div>
+      </div>
+  
+      <!-- Download App -->
+      <div>
+        <h3 class="font-semibold mb-3">Download App</h3>
+        <p class="text-gray-800 text-xs mb-2">Hemat Rp10.000 khusus pengguna baru</p>
+        <div class="space-y-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/512px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" class="w-24 h-auto">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="w-24 h-auto">
+        </div>
+        <div class="flex space-x-3 text-white mt-4 text-sm">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="mt-10 text-center text-gray-500 text-xs">
+      © 2025 FatPet.
+    </div>
+  </div>
+  </footer>
+
+<script>
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+  let products = [];
+
+  function muatDariLocalStorage() {
+    const data = localStorage.getItem("keranjang");
+    if (data) keranjang = JSON.parse(data);
+  }
+
+  function simpanKeLocalStorage() {
+    localStorage.setItem("keranjang", JSON.stringify(keranjang));
+  }
+
+  function tampilkanNotifikasi(pesan) {
+    alert(pesan);
+  }
+
+  const productList = document.getElementById('product-list');
+  const searchInput = document.getElementById('search-input');
+
+  async function fetchProducts() {
+    try {
+      const res = await fetch('https://fakestoreapi.com/products');
+      products = await res.json();
+
+      renderProducts(products);
+    } catch (err) {
+      productList.innerHTML = `<p class="text-red-500">Gagal memuat produk.</p>`;
+      console.error('Error:', err);
+    }
+  }
+
+  function renderProducts(productArray) {
+    productList.innerHTML = '';
+
+    productArray.forEach(product => {
+      const productCard = document.createElement('a');
+      productCard.href = `detail.html?id=${product.id}`;
+      productCard.className = "block";
+
+      productCard.innerHTML = `
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-3 transition-transform duration-200 hover:scale-97 hover:shadow-lg relative flex flex-col h-full">
+          <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500" aria-label="Tambah ke favorit">
+            <ion-icon name="heart-outline" class="text-xl"></ion-icon>
+          </button>
+
+          <div class="flex justify-center mb-3">
+            <img src="${product.image}" alt="${product.title}" class="w-36 h-36 object-contain" />
+          </div>
+
+          <h5 class="text-sm font-semibold text-gray-900 mb-2 line-clamp-2">${product.title}</h5>
+          <p class="text-base font-bold text-black mb-1">
+            Rp${Math.floor(product.price * 1600).toLocaleString("id-ID")}
+          </p>
+
+          <div class="flex items-center text-xs text-gray-600 mb-1">
+            <ion-icon name="location-outline"></ion-icon>
+            <span class="ml-1">Jakarta</span>
+          </div>
+
+          <div class="flex items-center text-xs text-gray-600 mb-2">
+            <ion-icon name="star"></ion-icon>
+            <span class="ml-1">${(Math.random() * 1 + 4).toFixed(1)} | ${Math.floor(Math.random() * 10)}rb+ terjual</span>
+          </div>
+
+          <div class="flex-grow"></div>
+          <div class="flex justify-end">
+            <button class="btn-tambah-keranjang bg-green-500 hover:bg-green-600 rounded-md text-xl p-1" aria-label="Tambah ke keranjang">
+              <ion-icon name="cart-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+      `;
+
+      productList.appendChild(productCard);
+
+      const btnTambah = productCard.querySelector(".btn-tambah-keranjang");
+      btnTambah.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const item = {
+          id: product.id,
+          title: product.title,
+          image: product.image,
+          price: product.price,
+          jumlah: 1
+        };
+
+        const index = keranjang.findIndex(p => p.id === item.id);
+        if (index !== -1) {
+          keranjang[index].jumlah += 1;
+        } else {
+          keranjang.push(item);
+        }
+
+        simpanKeLocalStorage();
+        tampilkanNotifikasi("Produk berhasil ditambahkan ke keranjang!");
+      });
+    });
+
+    if (productArray.length === 0) {
+      productList.innerHTML = `<p class="text-gray-600">Produk tidak ditemukan.</p>`;
+    }
+  }
+
+  searchInput.addEventListener('input', () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+    if (keyword === '') {
+      renderProducts(products);
+    } else {
+      const filtered = products.filter(p => p.title.toLowerCase().includes(keyword));
+      renderProducts(filtered);
+    }
+  });
+
+  muatDariLocalStorage();
+  fetchProducts();
+</script>
+
+</body>
+</html>
